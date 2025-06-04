@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-principal: #23414A;
+  --color-secundario: #325C66;
+  --color-acento: #8BBFCB;
+  --color-fondo: #F1F4F5;
+  --color-blanco: #FFFFFF;
+  --color-texto: #1F1F1F;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  scroll-margin-top: 80px; // Altura del navbar (ajústala si cambias el tamaño)
+  padding-top: 5rem;
+}
+

@@ -1,0 +1,70 @@
+<section id="contacto" class="contacto-section">
+  <div class="container">
+    <h2 class="title">Contáctenos</h2>
+    <p>
+      En C + D INGENIERÍA Y JURÍDICA INMOBILIARIA, protegemos rigurosamente tus datos personales. Te invitamos a conocer nuestra Política de Tratamiento de Datos, donde detallamos cómo recogemos, utilizamos y protegemos tu información. Si tienes alguna inquietud o deseas ejercer tus derechos, no dudes en contactarnos.
+    </p>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre completo *</label>
+        <input type="text" id="nombre" formControlName="nombre" required />
+      </div>
+
+      <div class="form-group">
+        <label for="correo">Correo electrónico *</label>
+        <input type="email" id="correo" formControlName="correo" required />
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Teléfono *</label>
+        <input type="tel" id="telefono" formControlName="telefono" required />
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje">Mensaje *</label>
+        <textarea id="mensaje" formControlName="mensaje" rows="5" required ></textarea>
+      </div>
+
+      <div class="form-check">
+        <input
+          type="checkbox"
+          formControlName="aceptaPolitica"
+          id="politica"
+          [checked]="checkboxMarcado"
+          hidden
+        />
+        <label for="politica">
+          Da clic aqui para aceptar la
+          <a href="#" (click)="abrirModal($event)">Política de Tratamiento de Datos Personales</a>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="!contactForm.valid">Enviar mensaje</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" *ngIf="mostrarModal">
+    <div class="modal">
+      <h3>Política de Tratamiento de Datos</h3>
+      <div class="modal-content">
+        <p>
+          En cumplimiento de la Ley 1581 de 2012 y del Decreto 1377 de 2013, informamos que los datos personales que usted proporcione serán tratados conforme a nuestra política, con el fin de garantizar la privacidad, integridad y seguridad de su información.
+          <br /><br />
+          El titular tiene derecho a conocer, actualizar, rectificar y suprimir los datos, así como a revocar la autorización otorgada. Para ejercer estos derechos puede escribirnos al correo electrónico oficial de contacto.
+          <br /><br />
+          Al aceptar esta política, usted autoriza a C + D INGENIERÍA Y JURÍDICA INMOBILIARIA a recolectar, almacenar, usar y suprimir sus datos personales conforme a lo establecido en nuestra política.
+          <br /><br />
+          Esta información será utilizada exclusivamente para fines legales, administrativos y comerciales autorizados por el titular.
+        </p>
+      </div>
+      <div class="modal-actions">
+        <button (click)="aceptarPolitica()">Aceptar</button>
+        <button (click)="cerrarModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</section>

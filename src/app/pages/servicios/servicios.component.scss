@@ -1,0 +1,44 @@
+.servicios-section {
+  background-color: #eef6f6;
+  padding: 3rem 1rem;
+
+  .container {
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    color: #004b4d;
+  }
+
+  .grid {
+    display: grid;
+    gap: 2rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+      h3 {
+        font-size: 1.3rem;
+        color: #006060;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: #333;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}

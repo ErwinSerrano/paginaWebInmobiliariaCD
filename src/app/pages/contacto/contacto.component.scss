@@ -1,0 +1,158 @@
+.contacto-section {
+  background-color: #f4fafa;
+  padding: 3rem 1rem;
+
+  .container {
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: #004b4d;
+  }
+
+  .description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: auto;
+
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #006060;
+        font-weight: 600;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: inherit;
+      }
+    }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      color: #333;
+
+      input[type="checkbox"] {
+        margin-right: 0.5rem;
+        margin-top: 0.2rem;
+      }
+
+      a {
+        color: #006060;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .form-actions {
+      text-align: center;
+      margin-top: 2rem;
+
+      button {
+        background-color: #006060;
+        color: white;
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #004b4d;
+        }
+
+        &:disabled {
+          background-color: #ccc;
+        }
+      }
+    }
+  }
+
+  // Modal estilo
+  .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal {
+    background: white;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+
+    h3 {
+      margin-top: 0;
+      color: #004b4d;
+      margin-bottom: 1rem;
+    }
+
+    .modal-content {
+      max-height: 300px;
+      overflow-y: auto;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .modal-actions {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+
+      button {
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:first-child {
+          background-color: #006060;
+          color: white;
+        }
+
+        &:last-child {
+          background-color: #ccc;
+          color: #333;
+        }
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}

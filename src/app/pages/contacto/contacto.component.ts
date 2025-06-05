@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-// import emailjs from 'emailjs-com'; // 👉 Activa esto cuando tengas el correo
+import emailjs from 'emailjs-com';
+
 
 @Component({
   selector: 'app-contacto',
@@ -21,7 +22,7 @@ export class ContactoComponent {
     this.contactForm = this.fb.group({
       nombre: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
-      telefono: ['', Validators.required],
+      telefono: ['', [Validators.required, Validators.pattern(/^3\d{9}$/)]],
       mensaje: [''],
       aceptaPolitica: [false, Validators.requiredTrue]
     });
@@ -43,32 +44,29 @@ export class ContactoComponent {
   }
 
   onSubmit() {
-    if (this.contactForm.invalid) return;
+  if (this.contactForm.invalid) return;
 
-    // 👇 Aquí se simula el envío
-    console.log('Formulario simulado para enviar:');
-    console.log(this.contactForm.value);
+  const templateParams = {
+    nombre: this.contactForm.value.nombre,
+    correo: this.contactForm.value.correo,
+    telefono: this.contactForm.value.telefono,
+    mensaje: this.contactForm.value.mensaje,
+    aceptaPolitica: this.contactForm.value.aceptaPolitica
+  };
 
+  emailjs.send(
+    'service_ooegyhk',
+    'template_4t4xp84',
+    templateParams,
+    'aW9UBS4brqLFbjnUX'
+  )
+  .then((response) => {
+    alert(`Mensaje enviado con éxito nos pondremos en contacto!`);
     this.mensajeEnviado = true;
     this.contactForm.reset();
-
-    // 📨 Cuando tengas correo corporativo, descomenta esto:
-    /*
-    const templateParams = {
-      nombre: this.contactForm.value.nombre,
-      email: this.contactForm.value.email,
-      mensaje: this.contactForm.value.mensaje
-    };
-
-    emailjs.send('TU_SERVICE_ID', 'TU_TEMPLATE_ID', templateParams, 'TU_PUBLIC_KEY')
-      .then((response) => {
-        console.log('Correo enviado con éxito!', response.status, response.text);
-        this.mensajeEnviado = true;
-        this.contactForm.reset();
-      }, (error) => {
-        console.error('Error al enviar:', error);
-        alert('Hubo un problema al enviar el mensaje. Intenta de nuevo.');
-      });
-    */
-  }
+  }, (error) => {
+    console.error('Error al enviar:', error);
+    alert('Hubo un problema al enviar el mensaje. Intenta de nuevo.');
+  });
+}
 }

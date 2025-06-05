@@ -6,6 +6,20 @@ import { Component } from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
+
+
 export class NavbarComponent {
 
+  menuVisible = false;
+
+
+    toggleMenu() {
+    this.menuVisible = !this.menuVisible;
+  }
+
+    closeMenu() {
+    this.menuVisible = false;
+  }
+
 }
+

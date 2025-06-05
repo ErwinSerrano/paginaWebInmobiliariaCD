@@ -8,26 +8,46 @@
   color: var(--color-blanco);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-  .vertical-navbar {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+  }
+
+  .top-row {
+    width: 100%;
+    display: flex;
+    justify-content: center; // 👈 CENTRA el logo en escritorio
+    align-items: center;
+    position: relative;
   }
 
   .logo img {
-    height: 120px;
+    height: 80px;
     object-fit: contain;
-    margin-top: -20px;;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--color-blanco);
+    cursor: pointer;
+    position: absolute;
+    right: 0;
   }
 
   .menu {
     list-style: none;
     display: flex;
-    gap: 4.0rem;
+    gap: 4rem;
     justify-content: center;
     padding: 0;
-    margin: 0;
+    margin: 0.5rem 0 0;
 
     li a {
       color: var(--color-blanco);
@@ -40,4 +60,37 @@
       }
     }
   }
+
+  // 🔽 MÓVIL
+  @media (max-width: 768px) {
+    .container {
+      align-items: stretch;
+    }
+
+    .top-row {
+      justify-content: space-between; // logo a la izq, botón a la der
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .menu {
+      flex-direction: column;
+      align-items: center;
+      display: none;
+      background-color: var(--color-principal);
+      padding-top: 1rem;
+    }
+
+    .menu.show {
+      display: flex;
+    }
+
+    .menu li {
+      margin: 0.5rem 0;
+    }
+  }
 }
+
+
